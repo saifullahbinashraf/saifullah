@@ -1,0 +1,304 @@
+/* app/globals.css */
+
+@import 'tailwindcss';
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #007f7a;
+  --sh-keyword: #e02518;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
+}
+
+/* This block is for the dark theme specifically */
+.dark:root {
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+body {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Prevent zoom on input focus (mobile) */
+input,
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+/* Custom Scrollbar Styling (applied only to elements with these classes) */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar,
+.right-column-dots-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height for horizontal scrollbars */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track,
+.right-column-dots-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5); /* Blue shade (e.g., Tailwind blue-500 with 50% opacity) */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7); /* Slightly darker blue on hover */
+}
+
+/* Specific styling for the "dot dot dot" effect on the right column */
+.right-column-dots-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.1); /* Very subtle blue for dots */
+  border-radius: 50%; /* Make it circular */
+  border: 2px solid transparent; /* Create space between dots */
+  background-clip: padding-box; /* Ensure border doesn't fill the space */
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3); /* Inner shadow for dot effect */
+}
+
+.right-column-dots-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.3); /* Slightly more visible on hover */
+}
+
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: rgba(59, 130, 246, 0.5) transparent; /* thumb color track color */
+}
+
+.right-column-dots-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.1) transparent; /* Very subtle blue for Firefox dots */
+}
+
+
+.prose .anchor {
+  @apply absolute invisible no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose a {
+  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: '#';
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose pre {
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded-lg;
+}
+
+.prose pre code {
+  @apply p-0;
+  border: initial;
+  line-height: 1.5;
+}
+
+.prose code span {
+  @apply font-medium;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose p {
+  @apply my-4 text-neutral-800 dark:text-neutral-200;
+}
+
+.prose h1 {
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose h2 {
+  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose h3 {
+  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose h4 {
+  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose strong {
+  @apply font-medium;
+}
+
+.prose ul {
+  @apply list-disc pl-6;
+}
+
+.prose ol {
+  @apply list-decimal pl-6;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.title {
+  text-wrap: balance;
+}
+
+/* --- NEW ANIMATION CODE --- */
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.5s ease-out forwards;
+}
+/* -------------------------- */
+
+@keyframes spin-gradient {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.outline-container::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: conic-gradient(from 180deg at 50% 50%, #3b82f6, #000, #000, #3b82f6);
+  clip-path: url(#blob-shape);
+  animation: spin-gradient 6s linear infinite;
+  z-index: -1;
+  will-change: transform;
+}
+
+.outline-container {
+  contain: layout style paint;
+}
+
+@keyframes scroll-words-step {
+  0%,
+  14% {
+    transform: translateY(0);
+  }
+  16%,
+  30% {
+    transform: translateY(-14.28%);
+  }
+  32%,
+  46% {
+    transform: translateY(-28.57%);
+  }
+  48%,
+  62% {
+    transform: translateY(-42.85%);
+  }
+  64%,
+  78% {
+    transform: translateY(-57.14%);
+  }
+  80%,
+  94% {
+    transform: translateY(-71.42%);
+  }
+  96%,
+  100% {
+    transform: translateY(-85.71%);
+  }
+}
+
+.animate-scroll-words-step {
+  animation: scroll-words-step 12s ease-in-out infinite;
+}
+
+.scrolling-text-mask {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, black 20%, black 80%, transparent 90%);
+  mask-image: linear-gradient(to bottom, transparent 10%, black 20%, black 80%, transparent 90%);
+}
+
+
+/* Custom style to move the Typebot bubble up on mobile */
+@media (max-width: 768px) {
+  typebot-bubble::part(button) {
+    bottom: 45px;
+  }
+}

@@ -1,0 +1,32 @@
+'use client'; // This component needs to be a Client Component to check the URL
+
+import { usePathname } from 'next/navigation';
+import { Navbar } from '@/app/components/nav';
+
+export default function LayoutWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  
+  // Check if the current path starts with /bizcomp or /meetup (matches all child routes)
+  const isFullScreenPage = pathname.startsWith('/bizcomp') || pathname.startsWith('/meetup');
+
+  return (
+    <>
+      {isFullScreenPage ? (
+        // If we're on a full-screen route, render without navbar
+        <>{children}</>
+      ) : (
+        // On all other pages, render the default layout with the navbar
+        <>
+          <Navbar />
+          <main className="md:ml-64 p-4 md:p-8 pb-20 md:pb-8">
+            {children}
+          </main>
+        </>
+      )}
+    </>
+  );
+}
