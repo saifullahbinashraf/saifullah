@@ -18,44 +18,40 @@ import LayoutWrapper from './LayoutWrapper'; // Import our new component using a
 
 export const metadata: Metadata = {
   title: {
-    default: 'Md Al Shahoriar Hossain',
-    template: '%s | Md Al Shahoriar Hossain',
+    default: 'Saifullah Bin Ashraf',
+    template: '%s | Saifullah Bin Ashraf',
   },
   keywords: [
-    'Md Al Shahoriar Hossain',
-    'Shahoriar Hossain',
-    'Shahoriar BUP',
-    'Shahoriar NDC',
-    'Md Al Shahoriar Hossain BUP',
-    'Md Al Shahoriar Hossain Finance',
+    'Saifullah Bin Ashraf',
+    'Saifullah',
     'Finance Professional',
-    'Web Developer',
+    'CA Aspirant',
+    'Content Creator',
     'Bangladesh',
-    'zaifears'
   ],
-  description: "Shahoriar Hossain's personal portfolio and life log.",
+  description: "Saifullah Bin Ashraf's portfolio showcasing finance expertise, educational content, and entrepreneurial ventures.",
   openGraph: {
-    title: 'Shahoriar Hossain',
-    description: 'Personal portfolio showcasing skills, projects, and life journey.',
-    url: 'https://shahoriar.me',
-    siteName: 'Shahoriar Hossain',
+    title: 'Saifullah Bin Ashraf',
+    description: 'Finance Professional, CA Aspirant & Content Creator | Portfolio & Life Journey',
+    url: 'https://saifullah.dev',
+    siteName: 'Saifullah Bin Ashraf',
     images: [
       {
-        url: 'https://shahoriar.me/shahoriar.jpg',
+        url: 'https://saifullah.dev/saifullah.jpg',
         width: 800,
         height: 800,
-        alt: 'Portrait of Shahoriar Hossain',
+        alt: 'Saifullah Bin Ashraf',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Md Al Shahoriar Hossain',
-    description: 'Personal portfolio and life log by Md Al Shahoriar Hossain.',
-    images: ['https://shahoriar.me/shahoriar.jpg'],
+    title: 'Saifullah Bin Ashraf',
+    description: 'Finance Professional, CA Aspirant & Content Creator',
+    images: ['https://saifullah.dev/saifullah.jpg'],
   },
-  metadataBase: new URL('https://shahoriar.me'),
+  metadataBase: new URL('https://saifullah.dev'),
   // NOTE: JSON‑LD will be injected manually in the <head> below; avoid using
   // metadata.other because Next outputs <meta> tags which are ignored by
   // search engines for structured data.
@@ -100,7 +96,7 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Shahoriar Hossain" />
+        <meta name="apple-mobile-web-app-title" content="Saifullah" />
         {/* icons are already emitted by the metadata API */}
         {/* JSON‑LD for structured data */}
         <script
@@ -109,11 +105,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Md Al Shahoriar Hossain",
-              "url": "https://shahoriar.me",
+              "name": "Saifullah Bin Ashraf",
+              "url": "https://saifullah.dev",
+              "email": "saifullahbinashraf03@gmail.com",
+              "telephone": "+880 1537-162289",
               "sameAs": [
-                "https://www.linkedin.com/in/al-shahoriar/",
-                "https://github.com/zaifears"
+                "https://www.linkedin.com/in/saifullah-bin-ashraf/",
+                "https://github.com/saifullah",
+                "https://youtube.com/@saifullahbinashraf"
               ]
             }),
           }}

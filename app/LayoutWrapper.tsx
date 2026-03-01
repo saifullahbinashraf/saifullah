@@ -1,7 +1,7 @@
 'use client'; // This component needs to be a Client Component to check the URL
 
 import { usePathname } from 'next/navigation';
-import { Navbar } from '@/app/components/nav';
+import { Dock } from '@/app/components/Dock';
 
 export default function LayoutWrapper({
   children,
@@ -16,15 +16,15 @@ export default function LayoutWrapper({
   return (
     <>
       {isFullScreenPage ? (
-        // If we're on a full-screen route, render without navbar
+        // If we're on a full-screen route, render without dock
         <>{children}</>
       ) : (
-        // On all other pages, render the default layout with the navbar
+        // On all other pages, render the default layout with the dock
         <>
-          <Navbar />
-          <main className="md:ml-64 p-4 md:p-8 pb-20 md:pb-8">
+          <main className="p-4 md:p-8 pb-32 md:pb-20">
             {children}
           </main>
+          <Dock />
         </>
       )}
     </>

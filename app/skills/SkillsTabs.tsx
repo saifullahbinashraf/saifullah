@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import PortfolioContent from '../design-portfolio/PortfolioContent'; // Import the shared component
+import PortfolioContent from '../design-portfolio/PortfolioContent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 
-// Define the structure for a single Certificate
 interface Certificate {
   fields: {
     title: string;
@@ -27,20 +29,28 @@ interface SkillsTabsProps {
 }
 
 const SkillItem = ({ icon, name }: { icon: string; name: string }) => (
-  <div className="group bg-gray-50 dark:bg-gray-900/50 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl p-6 text-center hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:border-blue-500/30 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-lg">
-    <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800/50 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-200 dark:group-hover:bg-gray-700/50 transition-colors duration-300">
+  <motion.div
+    whileHover={{ y: -4 }}
+    transition={{ duration: 0.3 }}
+    className="group bg-white/5 dark:bg-white/5 border border-white/10 dark:border-white/5 rounded-2xl p-6 text-center hover:border-white/20 dark:hover:border-white/10 backdrop-blur-xl transition-all duration-300 hover:bg-white/10"
+  >
+    <div className="w-16 h-16 bg-white/10 dark:bg-white/5 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:bg-white/20 dark:group-hover:bg-white/10 transition-colors duration-300">
       <div className="relative w-10 h-10">
         <Image src={`/${icon}`} alt={`${name} icon`} fill className="object-contain transition-transform duration-300 group-hover:scale-110" />
       </div>
     </div>
-    <h3 className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{name}</h3>
-  </div>
+    <h3 className="text-lg font-bold text-white group-hover:text-white/90 transition-colors duration-300">{name}</h3>
+  </motion.div>
 );
 
 const TechSkillItem = ({ title, logos, names }: { title: string; logos: { src: string, alt: string, href: string }[]; names: string }) => (
-  <div className="group bg-gray-50 dark:bg-gray-900/50 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl p-6 text-center h-full flex flex-col hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:border-blue-500/30 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-lg">
-    <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{title}</h3>
-    <div className="flex justify-center items-center gap-4 my-auto flex-grow">
+  <motion.div
+    whileHover={{ y: -4 }}
+    transition={{ duration: 0.3 }}
+    className="group bg-white/5 dark:bg-white/5 border border-white/10 dark:border-white/5 rounded-2xl p-6 text-center h-full flex flex-col hover:border-white/20 dark:hover:border-white/10 backdrop-blur-xl transition-all duration-300 hover:bg-white/10"
+  >
+    <h3 className="text-xl font-bold mb-4 text-white group-hover:text-white/90 transition-colors duration-300">{title}</h3>
+    <div className="flex justify-center items-center gap-4 my-auto grow">
       {logos.map(logo => (
         <a key={logo.src} href={logo.href} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-75">
           <div className="relative h-12 w-12">
@@ -49,57 +59,78 @@ const TechSkillItem = ({ title, logos, names }: { title: string; logos: { src: s
         </a>
       ))}
     </div>
-    <p className="text-gray-600 dark:text-gray-400 text-sm mt-4">{names}</p>
-  </div>
+    <p className="text-white/50 text-sm mt-4">{names}</p>
+  </motion.div>
 );
 
 const TabButtons = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) => (
-  <div className="flex flex-wrap justify-center mb-12 bg-gray-100 dark:bg-gray-900/50 dark:backdrop-blur-sm rounded-2xl p-2 max-w-fit mx-auto border border-gray-200 dark:border-gray-800">
-    <button
-      onClick={() => setActiveTab('skills')}
-      className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${activeTab === 'skills' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25' : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-800/50'}`}
-    >
-      Skills
-    </button>
-    <button
-      onClick={() => setActiveTab('certificates')}
-      className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${activeTab === 'certificates' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25' : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-800/50'}`}
-    >
-      Certifications
-    </button>
-    <button
-      onClick={() => setActiveTab('designPortfolio')}
-      className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${activeTab === 'designPortfolio' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/25' : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-800/50'}`}
-    >
-      Design Portfolio
-    </button>
+  <div className="flex flex-wrap justify-center mb-12 bg-white/5 dark:bg-white/5 backdrop-blur-xl rounded-2xl p-2 max-w-fit mx-auto border border-white/10 dark:border-white/5">
+    {['skills', 'certificates', 'designPortfolio'].map((tab) => (
+      <button
+        key={tab}
+        onClick={() => setActiveTab(tab)}
+        className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${
+          activeTab === tab
+            ? 'bg-white/15 text-white shadow-lg'
+            : 'text-white/60 hover:text-white/80 hover:bg-white/5'
+        }`}
+      >
+        {tab === 'skills' && 'Skills'}
+        {tab === 'certificates' && 'Certifications'}
+        {tab === 'designPortfolio' && 'Design Portfolio'}
+      </button>
+    ))}
   </div>
 );
 
 export default function SkillsTabs({ certificates }: SkillsTabsProps) {
   const [activeTab, setActiveTab] = useState('skills');
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
   return (
     <>
       <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} />
       <div>
         {activeTab === 'skills' && (
-          <>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-center mb-8">Core Competencies</h2>
-              <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <SkillItem icon="problem.png" name="Problem-Solving" />
-                <SkillItem icon="entrepreneurial.png" name="Entrepreneurial Mindset" />
-                <SkillItem icon="analysis.png" name="Analysis & Research" />
-                <SkillItem icon="financial.png" name="Financial & Economic Analysis" />
-                <SkillItem icon="leadership.png" name="Leadership & Collaboration" />
-                <SkillItem icon="presentation.png" name="Presentation & Communication" />
-              </div>
+              <motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-8 text-white">Core Competencies</motion.h2>
+              <motion.div variants={containerVariants} className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <motion.div variants={itemVariants}><SkillItem icon="problem.png" name="Problem-Solving" /></motion.div>
+                <motion.div variants={itemVariants}><SkillItem icon="entrepreneurial.png" name="Entrepreneurial Mindset" /></motion.div>
+                <motion.div variants={itemVariants}><SkillItem icon="analysis.png" name="Analysis & Research" /></motion.div>
+                <motion.div variants={itemVariants}><SkillItem icon="financial.png" name="Financial & Economic Analysis" /></motion.div>
+                <motion.div variants={itemVariants}><SkillItem icon="leadership.png" name="Leadership & Collaboration" /></motion.div>
+                <motion.div variants={itemVariants}><SkillItem icon="presentation.png" name="Presentation & Communication" /></motion.div>
+              </motion.div>
             </div>
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-center mb-8">Technical Skills</h2>
-              <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="md:col-span-2">
+              <motion.h2 variants={itemVariants} className="text-3xl font-bold text-center mb-8 text-white">Technical Skills</motion.h2>
+              <motion.div variants={containerVariants} className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <motion.div variants={itemVariants} className="md:col-span-2">
                   <TechSkillItem
                     title="Proficient Use of AI"
                     logos={[
@@ -110,23 +141,34 @@ export default function SkillsTabs({ certificates }: SkillsTabsProps) {
                     ]}
                     names="I leverage various AI tools to accelerate my development workflow, from code generation to research and analysis."
                   />
-                </div>
-                <TechSkillItem title="Design" logos={[{ src: 'canva.png', alt: 'Canva', href: 'https://www.canva.com' }, { src: 'figma.png', alt: 'Figma', href: 'https://www.figma.com' }]} names="Canva, Figma" />
-                <TechSkillItem title="Office & Productivity" logos={[{ src: 'office.png', alt: 'Microsoft Office', href: 'https://www.office.com' }, { src: 'google.png', alt: 'Google Workspace', href: 'https://workspace.google.com' }]} names="Microsoft Office Suite, Google Workplace" />
-                <TechSkillItem title="Web Development" logos={[{ src: 'wordpress.png', alt: 'Wordpress', href: 'https://wordpress.org' }, { src: 'nextjs.png', alt: 'Next.js', href: 'https://nextjs.org' }]} names="Wordpress, Next.js" />
-                <TechSkillItem title="Data Analysis" logos={[{ src: 'stata.png', alt: 'Stata', href: 'https://en.wikipedia.org/wiki/Stata' }, { src: 'spss.png', alt: 'SPSS', href: 'https://en.wikipedia.org/wiki/SPSS' }]} names="Stata, SPSS" />
-                <TechSkillItem title="Data Visualization" logos={[{ src: 'powerbi.png', alt: 'Power BI', href: 'https://www.microsoft.com/en-us/power-platform/products/power-bi' }]} names="Power BI" />
-                <TechSkillItem title="IT Support" logos={[{ src: 'computer.png', alt: 'Computer Hardware', href: '#' }]} names="Proficient in building computers from scratch and disassembling hardware components. Skilled at diagnosing and resolving both hardware and software issues." />
-              </div>
+                </motion.div>
+                <motion.div variants={itemVariants}><TechSkillItem title="Design" logos={[{ src: 'canva.png', alt: 'Canva', href: 'https://www.canva.com' }, { src: 'figma.png', alt: 'Figma', href: 'https://www.figma.com' }]} names="Canva, Figma" /></motion.div>
+                <motion.div variants={itemVariants}><TechSkillItem title="Office & Productivity" logos={[{ src: 'office.png', alt: 'Microsoft Office', href: 'https://www.office.com' }, { src: 'google.png', alt: 'Google Workspace', href: 'https://workspace.google.com' }]} names="Microsoft Office Suite, Google Workspace" /></motion.div>
+                <motion.div variants={itemVariants}><TechSkillItem title="Web Development" logos={[{ src: 'wordpress.png', alt: 'Wordpress', href: 'https://wordpress.org' }, { src: 'nextjs.png', alt: 'Next.js', href: 'https://nextjs.org' }]} names="Wordpress, Next.js" /></motion.div>
+                <motion.div variants={itemVariants}><TechSkillItem title="Data Analysis" logos={[{ src: 'stata.png', alt: 'Stata', href: 'https://en.wikipedia.org/wiki/Stata' }, { src: 'spss.png', alt: 'SPSS', href: 'https://en.wikipedia.org/wiki/SPSS' }]} names="Stata, SPSS" /></motion.div>
+                <motion.div variants={itemVariants}><TechSkillItem title="Data Visualization" logos={[{ src: 'powerbi.png', alt: 'Power BI', href: 'https://www.microsoft.com/en-us/power-platform/products/power-bi' }]} names="Power BI" /></motion.div>
+                <motion.div variants={itemVariants}><TechSkillItem title="IT Support" logos={[{ src: 'computer.png', alt: 'Computer Hardware', href: '#' }]} names="Proficient in building computers from scratch and disassembling hardware components." /></motion.div>
+              </motion.div>
             </div>
-          </>
+          </motion.div>
         )}
         {activeTab === 'certificates' && (
-          <div className="space-y-6 max-w-6xl mx-auto">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="space-y-6 max-w-6xl mx-auto"
+          >
             {certificates.map((cert: Certificate, index: number) => (
-              <div key={index} className="group bg-white dark:bg-gray-900/50 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl p-6 flex flex-col sm:flex-row items-start gap-6 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:border-blue-500/30 transition-all duration-300">
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="group bg-white/5 dark:bg-white/5 border border-white/10 dark:border-white/5 rounded-2xl p-6 flex flex-col sm:flex-row items-start gap-6 hover:border-white/20 dark:hover:border-white/10 backdrop-blur-xl transition-all duration-300 hover:bg-white/10"
+              >
                 {cert.fields.certificateImage && (
-                  <div className="shrink-0 w-full sm:w-24 sm:h-24 bg-gray-100 dark:bg-gray-800 rounded-xl p-2 flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-700/50 transition-colors duration-300">
+                  <div className="shrink-0 w-full sm:w-24 sm:h-24 bg-white/10 dark:bg-white/5 rounded-xl p-2 flex items-center justify-center group-hover:bg-white/20 dark:group-hover:bg-white/10 transition-colors duration-300">
                     <Image
                       src={`https:${cert.fields.certificateImage.fields.file.url}`}
                       alt={cert.fields.certificateImage.fields.title}
@@ -136,24 +178,24 @@ export default function SkillsTabs({ certificates }: SkillsTabsProps) {
                     />
                   </div>
                 )}
-                <div className="flex-grow">
-                  <h3 className="font-bold text-xl mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{cert.fields.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400">{cert.fields.issuingBody}</p>
+                <div className="grow">
+                  <h3 className="font-bold text-xl mb-1 group-hover:text-white/90 transition-colors duration-300 text-white">{cert.fields.title}</h3>
+                  <p className="text-white/60">{cert.fields.issuingBody}</p>
                   {cert.fields.description && (
-                    <div className="prose prose-sm prose-invert text-gray-700 dark:text-gray-300 mt-2">
+                    <div className="text-white/50 mt-2 text-sm">
                       {documentToReactComponents(cert.fields.description)}
                     </div>
                   )}
                   {cert.fields.credentialUrl && (
-                    <a href={cert.fields.credentialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors duration-300 mt-4 text-sm">
+                    <a href={cert.fields.credentialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white/70 hover:text-white font-semibold transition-colors duration-300 mt-4 text-sm">
                       View Credential
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                      <FontAwesomeIcon icon={faExternalLink} className="w-3 h-3" />
                     </a>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
         {activeTab === 'designPortfolio' && (
           <PortfolioContent />

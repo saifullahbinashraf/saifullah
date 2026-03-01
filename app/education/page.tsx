@@ -1,13 +1,18 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faExternalLink } from '@fortawesome/free-solid-svg-icons';
 
 const educationEntries = [
   {
     id: 'chartered-accountancy',
-    title: 'CHARTERED ACCOUNTANCY (CA) - CERTIFICATE LEVEL PASSED',
+    title: 'CHARTERED ACCOUNTANCY (CA) - CERTIFICATE LEVEL PASSED & PROFESSIONAL LEVEL (5/7 SUBJECTS)',
     institution: 'Institute of Chartered Accountants of Bangladesh',
-    period: 'January 2025 - June 2025',
-    description: 'By successfully completing the Certificate Level of Chartered Accountancy, I have gained a robust understanding of financial reporting, auditing principles, and domestic tax laws. This qualification directly supplements my academic studies, equipping me with the practical expertise needed to effectively manage accounts and ensure regulatory compliance. My background provides a comprehensive view of business operations, from strategic planning to detailed financial oversight.',
+    period: 'January 2024 - Present',
+    description: 'Successfully completed the Certificate Level of Chartered Accountancy gaining robust understanding of financial reporting, auditing principles, and domestic tax laws. Currently pursuing Professional Level with 5 out of 7 subjects passed. This qualification supplements my academic studies, equipping me with practical expertise in accounts management and regulatory compliance. My background provides a comprehensive view of business operations, from strategic planning to detailed financial oversight.',
     website: 'https://www.icab.org.bd',
     image: '/icab.png',
     imageAlt: 'Institute of Chartered Accountants of Bangladesh',
@@ -17,10 +22,10 @@ const educationEntries = [
   },
   {
     id: 'university',
-    title: 'Bangladesh University of Professionals',
-    institution: 'BBA in Finance & Banking',
-    period: '2022 - Present',
-    description: 'I am currently pursuing my Bachelor\'s degree in Finance & Banking, where my coursework covers key areas such as investment analysis, risk management, and business law. Beyond my formal studies, I am deeply involved in campus life and practical learning opportunities. I have collaborated with faculty members on research projects and have taken an active role in organizing a variety of events. These include departmental seminars, a cross-university business hackathon, as well as workshops and competitions focused on practical skills like Excel.',
+    title: 'BBA in Finance & Banking',
+    institution: 'Bangladesh University of Professionals',
+    period: 'July 2022 - July 2026',
+    description: 'Currently pursuing Bachelor\'s degree in Finance & Banking with CGPA of 3.81, covering investment analysis, risk management, and business law. Active in campus competitions and practical learning. Champion of Excelerate 2025 Excel Competition and First Runner-Up in Accfinity 2025 Accounting & Valuation Competition and Accolyze 2025 Business Strategy Competition.',
     website: 'https://bup.edu.bd',
     image: '/university.png',
     imageAlt: 'Bangladesh University of Professionals',
@@ -30,10 +35,10 @@ const educationEntries = [
   },
   {
     id: 'college',
-    title: 'Notre Dame College',
-    institution: 'Higher Secondary Certificate (HSC), Business Studies',
+    title: 'Higher Secondary Certificate (HSC), Business Studies',
+    institution: 'Notre Dame College',
     period: '2019 - 2021',
-    description: 'I went to Notre Dame College for my higher secondary studies, where I focused on Business. I worked hard and was very happy to get a GPA of 5.00. Being at Notre Dame taught me a lot about business basics and helped me get ready for university. It was a challenging place that really helped me learn how to think critically and solve problems.',
+    description: 'Completed higher secondary education focusing on Business Studies with GPA of 5.00. Developed strong foundation in business principles and critical thinking. Gained comprehensive knowledge in commerce and economics that motivated pursuit of advanced studies in finance.',
     website: 'https://ndc.edu.bd',
     image: '/college.png',
     imageAlt: 'Notre Dame College',
@@ -43,109 +48,161 @@ const educationEntries = [
   },
   {
     id: 'school',
-    title: 'Ideal School & College',
-    institution: 'Secondary School Certificate (SSC), Business Studies',
-    period: 'Completed 2019',
-    description: 'This is where my interest in business really started. I finished my secondary school here, studying Business and getting a GPA of 4.50. Learning about commerce and economics at Ideal School & College is what made me want to continue studying business and finance. It gave me a great start and the motivation to keep learning.',
-    website: 'https://iscm.edu.bd/',
+    title: 'Secondary School Certificate (SSC), Business Studies',
+    institution: 'Monipur High School (MUBC)',
+    period: '2017 - 2019',
+    description: 'Completed secondary education with GPA of 4.89 while receiving General Scholarship. Initial interest in business and commerce began here. Developed strong foundation in fundamental business and economic concepts.',
+    website: '#',
     image: '/school.png',
-    imageAlt: 'Ideal School & College',
-    link: 'https://en.wikipedia.org/wiki/Ideal_School_and_College',
+    imageAlt: 'Monipur High School',
+    link: '#',
     imagePosition: 'right',
     borderColor: 'hover:border-orange-500/50'
   }
 ];
 
 export default function EducationPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="min-h-screen bg-black text-white">
+      {/* Background gradient */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
+      </div>
+
+      <div className="relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Education</h1>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">My academic journey and qualifications</p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto px-4 py-16"
+        >
+          <h1 className="text-7xl md:text-8xl font-black leading-tight mb-4">
+            Education
+          </h1>
+          <p className="text-xl text-white/60 max-w-2xl">
+            My academic journey and professional qualifications shaping my expertise.
+          </p>
+        </motion.div>
 
         {/* Education Entries */}
-        <div className="space-y-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+          className="max-w-7xl mx-auto px-4 py-8 space-y-6"
+        >
           {educationEntries.map((entry) => (
-            <div key={entry.id} className={`group bg-white dark:bg-neutral-900/50 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl p-6 md:p-8 ${entry.borderColor} transition-all duration-300 hover:shadow-2xl`}>
-               <div className={`flex flex-col md:flex-row items-center gap-8 ${entry.imagePosition === 'right' ? 'md:flex-row-reverse' : ''}`}>
+            <motion.div
+              key={entry.id}
+              variants={itemVariants}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="group bg-white/5 dark:bg-white/5 border border-white/10 dark:border-white/5 rounded-2xl overflow-hidden backdrop-blur-xl hover:border-white/20 dark:hover:border-white/10 transition-all duration-300 hover:bg-white/10"
+            >
+              <div className={`flex flex-col md:flex-row items-stretch gap-0 ${entry.imagePosition === 'right' ? 'md:flex-row-reverse' : ''}`}>
                 
                 {/* Image Section */}
-                <div className="shrink-0 w-full md:w-1/3">
+                <div className="shrink-0 w-full md:w-1/3 h-64 md:h-80 overflow-hidden">
                   <Link href={entry.link} target="_blank" rel="noopener noreferrer">
-                    <div className="relative overflow-hidden rounded-xl">
+                    <div className="relative w-full h-full">
                       <Image
                         src={entry.image}
                         alt={entry.imageAlt}
-                        width={400}
-                        height={250}
-                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 dark:bg-black/20 dark:group-hover:bg-black/10 transition-colors duration-300"></div>
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                     </div>
                   </Link>
                 </div>
 
                 {/* Content Section */}
-                <div className="flex-grow">
+                <div className="grow p-6 md:p-8 flex flex-col justify-center">
                   <Link href={entry.link} target="_blank" rel="noopener noreferrer">
-                    <h2 className="text-2xl font-bold mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 hover:underline">
+                    <h2 className="text-2xl font-bold mb-1 group-hover:text-white/90 transition-colors duration-300 cursor-pointer">
                       {entry.title}
                     </h2>
                   </Link>
-                  <p className="text-blue-600 dark:text-blue-400 font-semibold mb-2">{entry.institution}</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">{entry.period}</p>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                  <p className="text-white/70 font-semibold mb-2">{entry.institution}</p>
+                  <p className="text-white/50 text-sm mb-4">{entry.period}</p>
+                  <p className="text-white/60 leading-relaxed mb-6">
                     {entry.description}
                   </p>
                   <a 
                     href={entry.website} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors duration-300"
+                    className="inline-flex items-center gap-2 text-white/70 hover:text-white font-semibold transition-colors duration-300 w-fit"
                   >
                     Visit Website
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                    </svg>
+                    <FontAwesomeIcon icon={faExternalLink} className="w-4 h-4" />
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20">
-          <div className="bg-gray-100 dark:bg-gray-900/30 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Want to Learn More?</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              Explore my skills, certifications, and technical expertise to see how my educational background translates into practical capabilities.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/skills"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-blue-600/25"
-              >
-                View Skills
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                </svg>
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white font-semibold rounded-xl border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300 hover:transform hover:scale-105"
-              >
-                Get in Touch
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                </svg>
-              </Link>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto px-4 py-20"
+        >
+          <div className="text-center">
+            <div className="bg-white/5 dark:bg-white/5 border border-white/10 dark:border-white/5 backdrop-blur-xl rounded-2xl p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4">Ready to work together?</h3>
+              <p className="text-white/60 mb-6 leading-relaxed">
+                Explore my skills and technical expertise to see how my educational background translates into practical capabilities.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/skills"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl backdrop-blur-xl hover:bg-white/20 transition-all duration-300 group"
+                >
+                  View Skills
+                  <motion.span whileHover={{ x: 4 }} className="inline-block">
+                    <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                  </motion.span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-xl backdrop-blur-xl hover:bg-white/10 transition-all duration-300 group"
+                >
+                  Get in Touch
+                  <motion.span whileHover={{ x: 4 }} className="inline-block">
+                    <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                  </motion.span>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
