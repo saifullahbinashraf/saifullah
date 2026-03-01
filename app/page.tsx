@@ -352,7 +352,7 @@ export default function Page() {
                 Coded in Visual Studio Code by yours truly. Built with Next.js and Tailwind CSS, deployed with Vercel.
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-500 mt-4">
-                💡 Tip: Change your browser or OS appearance to switch between light and dark themes.
+                💡 Tip: Use the theme toggle in the navigation to switch between light and dark mode.
               </p>
             </div>
           </div>
