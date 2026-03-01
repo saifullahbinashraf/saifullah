@@ -10,8 +10,7 @@ This site was built in Visual Studio Code through a collaboration with AI. It's 
 
 You can view the live website at:
 
-- **Primary Domain:** [zaifears.vercel.app](https://zaifears.vercel.app)
-- **Vercel URL:** [shahoriar.vercel.app](https://shahoriar.vercel.app)
+- **Primary Domain:** [saifullahbinashraf.vercel.app](https://saifullahbinashraf.vercel.app)
 
 ---
 
@@ -29,7 +28,7 @@ This site is built with a modern, serverless stack. We use `pnpm` for dependency
 
 ## 💬 Get in Touch
 
-If you'd like to connect or discuss a project, feel free to reach out via the [contact page on my website](https://zaifears.vercel.app/contact).
+If you'd like to connect or discuss a project, feel free to reach out via the [contact page on my website](https://saifullahbinashraf.vercel.app/contact).
 
 ---
 

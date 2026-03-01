@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       // crawlDelay: 1, // optional
     },
-    sitemap: 'https://zaifears.vercel.app/sitemap.xml',
-    host: 'shahoriar.me',
+    sitemap: 'https://saifullahbinashraf.vercel.app/sitemap.xml',
+    host: 'saifullahbinashraf.vercel.app',
   }
 }

@@ -1,7 +1,7 @@
 import { contentfulClient } from '@/lib/contentfulClient';
 
 // --- UPDATED: The correct URL for your live website (canonical domain for SEO) ---
-export const baseUrl = 'https://shahoriar.me';
+export const baseUrl = 'https://saifullahbinashraf.vercel.app';
 
 // Define the structure of a blog post for fetching
 interface LifeEvent {
@@ -49,7 +49,12 @@ export default async function sitemap() {
     return [...routes, ...lifeRoutes];
 
   } catch (error) {
-    console.error("Error fetching sitemap data from Contentful:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    // Silently handle missing content type or Contentful misconfiguration
+    if (errorMsg.includes('unknownContentType') || errorMsg.includes('placeholder')) {
+      return routes;
+    }
+    console.warn("[Sitemap] Error fetching Contentful data:", errorMsg);
     // If Contentful fails, return only the static routes
     return routes;
   }

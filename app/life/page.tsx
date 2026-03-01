@@ -33,7 +33,12 @@ async function getLifeEvents(): Promise<LifeEvent[]> {
     });
     return response.items as unknown as LifeEvent[];
   } catch (error) {
-    console.error('Failed to fetch life events from Contentful:', error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    // Silently fail if content type doesn't exist or Contentful is not configured
+    if (errorMsg.includes('unknownContentType') || errorMsg.includes('placeholder')) {
+      return [];
+    }
+    console.warn('Unable to fetch life events:', errorMsg);
     return [];
   }
 }

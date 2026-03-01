@@ -1,4 +1,4 @@
-// Service Worker - zaifears.vercel.app
+// Service Worker - saifullahbinashraf.vercel.app
 // Minimal SW to enable PWA installability without causing load stalls
 
 const CACHE_NAME = 'zaifears-v1';
