@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faHome,
   faUserGraduate,
@@ -12,11 +13,12 @@ import {
   faCalendarAlt,
   faMicrochip
 } from '@fortawesome/free-solid-svg-icons';
+import { ThemeToggle } from './ui/theme-toggle';
 
 interface NavItem {
   href: string;
   name: string;
-  icon: any;
+  icon: IconDefinition;
   desktopOnly?: boolean;
 }
 
@@ -88,6 +90,9 @@ export function Navbar() {
               );
             })}
           </ul>
+          <div className="mt-4 flex justify-start pl-2">
+            <ThemeToggle />
+          </div>
         </nav>
       </aside>
 
@@ -115,6 +120,10 @@ export function Navbar() {
                 </Link>
               );
             })}
+          <div className="relative flex flex-col items-center text-center p-2 w-16">
+            <ThemeToggle />
+            <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1">Theme</span>
+          </div>
         </nav>
       </div>
     </>

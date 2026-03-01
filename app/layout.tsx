@@ -15,6 +15,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import LayoutWrapper from './LayoutWrapper'; // Import our new component using alias
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
   title: {
@@ -92,6 +93,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cx(
         GeistSans.variable,
         GeistMono.variable
@@ -142,7 +144,7 @@ export default function RootLayout({
       </head>
       {/* RESTORED: dark:bg-black and dark:text-white classes */}
       <body className="antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
-        
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
         {/* The LayoutWrapper now handles showing/hiding the navbar */}
         <LayoutWrapper>
           {children}
@@ -151,6 +153,7 @@ export default function RootLayout({
         {/* These are now outside the main wrapper to apply to all pages */}
         <Analytics />
         <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   );
