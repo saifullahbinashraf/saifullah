@@ -56,9 +56,6 @@ importers:
       geist:
         specifier: 1.5.1
         version: 1.5.1(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
-      install:
-        specifier: ^0.13.0
-        version: 0.13.0
       lucide-react:
         specifier: ^0.561.0
         version: 0.561.0(react@19.2.4)
@@ -98,9 +95,6 @@ importers:
       typescript:
         specifier: 5.9.3
         version: 5.9.3
-      vercel:
-        specifier: ^50.25.4
-        version: 50.25.4(typescript@5.9.3)
       xlsx:
         specifier: ^0.18.5
         version: 0.18.5
@@ -117,6 +111,9 @@ importers:
       tailwindcss:
         specifier: ^4.2.1
         version: 4.2.1
+      vercel:
+        specifier: ^50.25.4
+        version: 50.25.4(typescript@5.9.3)
 
 packages:
 
@@ -1892,10 +1889,6 @@ packages:
 
   inline-style-parser@0.2.7:
     resolution: {integrity: sha512-Nb2ctOyNR8DqQoR0OwRG95uNWIC0C1lCgf5Naz5H6Ji72KZ8OcFZLz2P5sNgwlyoJ8Yif11oMuYs5pBQa86csA==}
-
-  install@0.13.0:
-    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
-    engines: {node: '>= 0.10'}
 
   internmap@2.0.3:
     resolution: {integrity: sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==}
@@ -4702,8 +4695,6 @@ snapshots:
   inherits@2.0.4: {}
 
   inline-style-parser@0.2.7: {}
-
-  install@0.13.0: {}
 
   internmap@2.0.3: {}
 
