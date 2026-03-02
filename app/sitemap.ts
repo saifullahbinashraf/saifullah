@@ -4,12 +4,12 @@ import { contentfulClient } from '@/lib/contentfulClient';
 export const baseUrl = 'https://saifullahbinashraf.vercel.app';
 
 // Define the structure of a blog post for fetching
-interface LifeEvent {
-  fields: {
-    slug: string;
-  };
+interface BlogPost {
   sys: {
     updatedAt: string;
+  };
+  fields: {
+    slug: string;
   };
 }
 

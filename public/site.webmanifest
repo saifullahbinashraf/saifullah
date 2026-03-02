@@ -1,0 +1,25 @@
+{
+  "name": "Saifullah Bin Ashraf - Finance Professional & Educator",
+  "short_name": "Saifullah",
+  "description": "Finance Professional, CA Aspirant & Content Creator - Portfolio, Academy, and Insights",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "start_url": "/"
+}

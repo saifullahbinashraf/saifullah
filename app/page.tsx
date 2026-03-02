@@ -187,8 +187,16 @@ export default function HomePage() {
           </div>
 
           {/* Right side - Hero Image */}
-          <motion.div variants={itemVariants} className="flex-1 flex justify-center md:justify-end items-center">
+          <motion.div variants={itemVariants} className="flex-1 flex justify-center md:justify-end items-center relative">
             <div className="relative w-full max-w-sm md:max-w-md h-96 md:h-[500px]">
+              {/* Animated dark background */}
+              <div className="absolute inset-0 -z-10 rounded-3xl overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-br from-blue-900/30 to-purple-900/30 dark:from-blue-950/50 dark:to-purple-950/50" />
+                {/* Animated blobs */}
+                <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/20 dark:bg-blue-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
+                <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-500/20 dark:bg-purple-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
+                <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/20 dark:bg-pink-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
+              </div>
               <Image
                 src="/saif-hero.png"
                 alt="Saifullah Bin Ashraf"

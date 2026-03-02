@@ -56,15 +56,14 @@ export const metadata: Metadata = {
   // metadata.other because Next outputs <meta> tags which are ignored by
   // search engines for structured data.
   icons: {
-    icon: '/favicon.ico',
-    apple: [
-      '/apple-touch-icon-iphone-60x60.png',
-      '/apple-touch-icon-ipad-76x76.png',
-      '/apple-touch-icon-iphone-retina-120x120.png',
-      '/apple-touch-icon-ipad-retina-152x152.png'
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico' },
     ],
+    apple: '/apple-touch-icon.png',
   },
-  manifest: '/manifest.webmanifest',
+  manifest: '/site.webmanifest',
   verification: {
     google: 'pT4MHjovbY0MXYCrgAPN3LQHyTuLLq_iTtmWyx3GSgc',
   },
