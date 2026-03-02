@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     siteName: 'Saifullah Bin Ashraf',
     images: [
       {
-        url: 'https://saifullah.dev/saifullah.jpg',
-        width: 800,
-        height: 800,
+        url: '/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
         alt: 'Saifullah Bin Ashraf',
       },
     ],

@@ -95,33 +95,16 @@ export function Weather() {
   };
 
   return (
-    <div className="flex flex-col gap-4 text-gray-600 dark:text-zinc-400 font-mono text-sm">
-      <div className="flex items-center gap-3">
-        <FontAwesomeIcon
-          icon={getWeatherIcon(weather.condition)}
-          className="w-5 h-5"
-        />
-        <div className="flex flex-col">
-          <span className="font-semibold text-black dark:text-white">
-            {weather.temp}°C
-          </span>
-          <span className="text-xs">{weather.condition}</span>
-        </div>
-      </div>
-
-      <div className="flex gap-4 text-xs">
-        <div className="flex items-center gap-1">
-          <FontAwesomeIcon icon={faDroplet} className="w-3 h-3" />
-          <span>{weather.humidity}%</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <FontAwesomeIcon icon={faWind} className="w-3 h-3" />
-          <span>{weather.windSpeed} km/h</span>
-        </div>
-      </div>
-
-      <div className="text-xs text-gray-500 dark:text-zinc-500">
-        {weather.city}
+    <div className="flex items-center gap-3 text-gray-600 dark:text-zinc-400 font-mono text-sm">
+      <FontAwesomeIcon
+        icon={getWeatherIcon(weather.condition)}
+        className="w-5 h-5"
+      />
+      <div className="flex flex-col">
+        <span className="font-semibold text-black dark:text-white">
+          {weather.temp}°C
+        </span>
+        <span className="text-xs">{weather.condition}</span>
       </div>
     </div>
   );
