@@ -3,10 +3,10 @@ import { faFacebook, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-
 import { faEnvelope, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 const contactMethods = [
-    { name: 'Email', href: 'mailto:alshahoriar.hossain@gmail.com', icon: faEnvelope, color: 'text-red-500 dark:text-red-400', hoverColor: 'hover:border-red-500', description: 'Send me an email for professional inquiries' },
-    { name: 'Facebook', href: 'https://facebook.com/alshahoriar.hossain', icon: faFacebook, color: 'text-blue-600 dark:text-blue-500', hoverColor: 'hover:border-blue-500', description: 'Connect with me on Facebook' },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/shahoriarhossain/', icon: faLinkedin, color: 'text-blue-700 dark:text-blue-600', hoverColor: 'hover:border-blue-600', description: 'Professional networking and career updates' },
-    { name: 'YouTube', href: 'https://www.youtube.com/@takatunes', icon: faYoutube, color: 'text-red-600 dark:text-red-500', hoverColor: 'hover:border-red-500', description: 'Check out my video content' },
+    { name: 'Email', href: 'mailto:saifullahbinashraf03@gmail.com', icon: faEnvelope, color: 'text-red-500 dark:text-red-400', hoverColor: 'hover:border-red-500', description: 'Send me an email for professional inquiries' },
+    { name: 'Facebook', href: 'https://www.facebook.com/saifullah.lll', icon: faFacebook, color: 'text-blue-600 dark:text-blue-500', hoverColor: 'hover:border-blue-500', description: 'Connect with me on Facebook' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/saifullah-bin-ashraf/', icon: faLinkedin, color: 'text-blue-700 dark:text-blue-600', hoverColor: 'hover:border-blue-600', description: 'Professional networking and career updates' },
+    { name: 'YouTube', href: 'https://www.youtube.com/@saifullahbinashraf', icon: faYoutube, color: 'text-red-600 dark:text-red-500', hoverColor: 'hover:border-red-500', description: 'Check out my video content' },
 ];
 
 export default function ContactPage() {
@@ -24,7 +24,7 @@ export default function ContactPage() {
         {/* Schedule Meeting Card - Featured (Gradient Removed) */}
         <div className="mb-12 max-w-4xl mx-auto">
           <a
-            href="https://cal.com/zaifears"
+            href="https://cal.com/saifullahbinashraf"
             target="_blank"
             rel="noopener noreferrer"
             className="group block bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 hover:border-blue-500/50 dark:hover:border-blue-500 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-600/10"
@@ -82,9 +82,9 @@ export default function ContactPage() {
         {/* Additional Contact Info */}
         <div className="mt-16 text-center">
           <div className="bg-gray-100 dark:bg-gray-900/30 dark:backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Let's Work Together</h3>
+            <h3 className="text-2xl font-bold mb-4">Let's Learn Together</h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Whether you're looking for collaboration on a project, need technical assistance, or just want to have a conversation about finance, technology, or entrepreneurship, I'd love to hear from you. Don't hesitate to reach out through any of the channels above!
+              Whether you're a student seeking guidance, looking to deepen your understanding of finance and accounting, interested in joining my academy programs, or simply want to discuss your learning journey, I'm here to support your growth. Feel free to reach out through any of the channels above—I'm always passionate about helping aspiring professionals succeed!
             </p>
           </div>
         </div>

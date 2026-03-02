@@ -10,11 +10,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ revalidated: true, path });
     } else {
       // Revalidate all main pages
-      revalidatePath('/skills');
-      revalidatePath('/life');
+      revalidatePath('/blog');
+      revalidatePath('/portfolio');
       revalidatePath('/');
       
-      return NextResponse.json({ revalidated: true, paths: ['/skills', '/life', '/'] });
+      return NextResponse.json({ revalidated: true, paths: ['/blog', '/portfolio', '/'] });
     }
   } catch (err) {
     console.error('Revalidation error:', err);

@@ -10,6 +10,7 @@ import {
   faEnvelope,
   faFlag,
   faBriefcase,
+  faMicrochip,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 
@@ -22,10 +23,9 @@ interface DockItem {
 
 const dockItems: DockItem[] = [
   { href: '/', name: 'Home', icon: faHome },
-  { href: '/work', name: 'Work', icon: faBriefcase },
-  { href: '/skills', name: 'Skills', icon: faCogs },
-  { href: '/education', name: 'Education', icon: faUserGraduate },
-  { href: '/life', name: 'Life', icon: faFlag },
+  { href: '/academy', name: 'Academy', icon: faUserGraduate },
+  { href: '/portfolio', name: 'Portfolio', icon: faBriefcase },
+  { href: '/blog', name: 'Insights', icon: faMicrochip },
   { href: '/contact', name: 'Contact', icon: faEnvelope },
 ];
 
@@ -54,7 +54,7 @@ export function Dock() {
       <div className="flex justify-center items-end pb-6 px-4">
         <div className="relative pointer-events-auto">
           {/* Glassmorphic background */}
-          <div className="absolute inset-0 bg-white/5 dark:bg-black/20 backdrop-blur-xl rounded-3xl border border-white/10 dark:border-white/5" />
+          <div className="absolute inset-0 bg-gray-200/40 dark:bg-black/20 backdrop-blur-xl rounded-3xl border border-gray-300/60 dark:border-white/5" />
           
           {/* Dock content */}
           <nav className="relative px-2 py-3 flex gap-1">
@@ -68,8 +68,8 @@ export function Dock() {
                     whileTap={{ scale: 0.95 }}
                     className={`relative p-3 rounded-2xl transition-all duration-300 flex items-center justify-center ${
                       isActive
-                        ? 'bg-white/15 dark:bg-white/10 text-white'
-                        : 'text-white/50 dark:text-white/40 hover:text-white/70 dark:hover:text-white/60'
+                        ? 'bg-gray-300 dark:bg-white/10 text-black dark:text-white'
+                        : 'text-gray-600 dark:text-white/40 hover:text-gray-800 dark:hover:text-white/60'
                     }`}
                     title={item.name}
                   >
@@ -79,7 +79,7 @@ export function Dock() {
                     {isActive && (
                       <motion.div
                         layoutId="dockIndicator"
-                        className="absolute inset-0 rounded-2xl bg-white/10 dark:bg-white/5"
+                        className="absolute inset-0 rounded-2xl bg-gray-300/50 dark:bg-white/5"
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}

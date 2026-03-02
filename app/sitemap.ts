@@ -18,35 +18,35 @@ export default async function sitemap() {
   // homepage and /life get highest weight; others are scaled based on content value
   const priorityMap: Record<string, number> = {
     '': 1,
-    '/life': 1,
-    '/skills': 0.7,
-    '/education': 0.6,
-    '/techtips': 0.5,
-    '/contact': 0.4,
-    '/design-portfolio': 0.5,
+    '/portfolio': 0.9,
+    '/portfolio/education': 0.8,
+    '/academy': 0.9,
+    '/blog': 0.8,
+    '/life': 0.8,
+    '/contact': 0.7,
   };
 
-  const routes = ['', '/education', '/skills', '/techtips', '/contact', '/life', '/design-portfolio'].map((route) => ({
+  const routes = ['', '/portfolio', '/portfolio/education', '/academy', '/blog', '/contact', '/life'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
     priority: priorityMap[route] ?? 0.5, // default to medium
   }));
 
-  // 2. Fetch all your dynamic "Life Journey" posts from Contentful
+  // 2. Fetch all blog posts from Contentful
   try {
     const response = await contentfulClient.getEntries({
       content_type: 'zaifearsBlogPost',
     });
-    const lifePosts = response.items as unknown as LifeEvent[];
+    const blogPosts = response.items as unknown as BlogPost[];
 
-    const lifeRoutes = lifePosts.map((post) => ({
-      url: `${baseUrl}/life/${post.fields.slug}`,
+    const blogRoutes = blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.fields.slug}`,
       lastModified: new Date(post.sys.updatedAt).toISOString().split('T')[0],
-      priority: 0.6, // individual posts still important but below the main /life listing
+      priority: 0.6, // individual posts important but below the main /blog listing
     }));
     
     // 3. Combine the static and dynamic routes
-    return [...routes, ...lifeRoutes];
+    return [...routes, ...blogRoutes];
 
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : String(error);
