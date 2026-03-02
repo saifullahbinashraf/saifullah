@@ -33,25 +33,33 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Saifullah Bin Ashraf',
     description: 'Finance Professional, CA Aspirant & Content Creator | Portfolio & Life Journey',
-    url: 'https://saifullah.dev',
+    url: 'https://saifullahbinashraf.me',
     siteName: 'Saifullah Bin Ashraf',
     images: [
       {
-        url: '/android-chrome-512x512.png',
+        url: 'https://saifullahbinashraf.me/android-chrome-512x512.png',
         width: 512,
         height: 512,
+        type: 'image/png',
         alt: 'Saifullah Bin Ashraf',
       },
     ],
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'Saifullah Bin Ashraf',
     description: 'Finance Professional, CA Aspirant & Content Creator',
-    images: ['https://saifullah.dev/saifullah.jpg'],
+    images: [
+      {
+        url: 'https://saifullahbinashraf.me/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'Saifullah Bin Ashraf',
+      },
+    ],
   },
-  metadataBase: new URL('https://saifullah.dev'),
+  metadataBase: new URL('https://saifullahbinashraf.me'),
   // NOTE: JSON‑LD will be injected manually in the <head> below; avoid using
   // metadata.other because Next outputs <meta> tags which are ignored by
   // search engines for structured data.
@@ -105,7 +113,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Saifullah Bin Ashraf",
-              "url": "https://saifullah.dev",
+              "url": "https://saifullahbinashraf.me",
               "email": "saifullahbinashraf03@gmail.com",
               "telephone": "+880 1537-162289",
               "sameAs": [

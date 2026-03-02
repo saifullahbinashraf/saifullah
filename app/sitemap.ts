@@ -1,7 +1,7 @@
 import { contentfulClient } from '@/lib/contentfulClient';
 
 // --- UPDATED: The correct URL for your live website (canonical domain for SEO) ---
-export const baseUrl = 'https://saifullahbinashraf.vercel.app';
+export const baseUrl = 'https://saifullahbinashraf.me';
 
 // Define the structure of a blog post for fetching
 interface BlogPost {
@@ -15,18 +15,17 @@ interface BlogPost {
 
 export default async function sitemap() {
   // 1. Start with your static pages and assign SEO priorities
-  // homepage and /life get highest weight; others are scaled based on content value
+  // homepage and academy get highest weight; blog is secondary
   const priorityMap: Record<string, number> = {
     '': 1,
-    '/portfolio': 0.9,
+    '/portfolio': 0.85,
     '/portfolio/education': 0.8,
-    '/academy': 0.9,
-    '/blog': 0.8,
-    '/life': 0.8,
+    '/academy': 1,
+    '/blog': 0.9,
     '/contact': 0.7,
   };
 
-  const routes = ['', '/portfolio', '/portfolio/education', '/academy', '/blog', '/contact', '/life'].map((route) => ({
+  const routes = ['', '/portfolio', '/portfolio/education', '/academy', '/blog', '/contact'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
     priority: priorityMap[route] ?? 0.5, // default to medium

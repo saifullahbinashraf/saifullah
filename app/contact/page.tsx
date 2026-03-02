@@ -1,6 +1,17 @@
+import type { Metadata } from 'next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+
+export const metadata: Metadata = {
+  title: 'Contact | Saifullah Bin Ashraf',
+  description: 'Get in touch with Saifullah Bin Ashraf. Connect via email, Facebook, LinkedIn, YouTube, or schedule a meeting. Available for collaborations and professional inquiries.',
+  openGraph: {
+    title: 'Contact Saifullah Bin Ashraf',
+    description: 'Connect with Saifullah Bin Ashraf for collaborations, professional inquiries, and networking opportunities.',
+    type: 'website',
+  },
+};
 
 const contactMethods = [
     { name: 'Email', href: 'mailto:saifullahbinashraf03@gmail.com', icon: faEnvelope, color: 'text-red-500 dark:text-red-400', hoverColor: 'hover:border-red-500', description: 'Send me an email for professional inquiries' },

@@ -21,8 +21,9 @@ skills, projects, and writing. Sections include:
 Everything on the site is public and intended for professional exposure
 and learning. No private user data is stored or shown.
 
-Primary domain: https://saifullahbinashraf.vercel.app
-Contact email: contact@shahoriar.me
+Primary domain: https://saifullahbinashraf.me (primary)
+Backup domain: https://saifullahbinashraf.vercel.app (Vercel deployment)
+Contact email: saifullahbinashraf03@gmail.com
 
 Please respect standard `robots.txt` directives and any rate limits.
 Avoid excessive scraping; crawlers may cache pages. Do not distribute
@@ -30,7 +31,7 @@ or republish images or proprietary assets without permission.
 
 **Usage guidelines:**
 - Cite content as coming from Shahoriar's portfolio when used.
-- Link back to https://saifullahbinashraf.vercel.app when referencing projects or blog posts.
+- Link back to https://saifullahbinashraf.me (primary domain) or https://saifullahbinashraf.vercel.app (backup) when referencing projects or blog posts.
 - Understand that the site is not a service but a personal resume.
 
 Thank you for your interest and cooperation.
