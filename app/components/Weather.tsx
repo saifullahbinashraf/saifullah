@@ -95,7 +95,7 @@ export function Weather() {
   };
 
   return (
-    <div className="flex items-center gap-3 text-gray-600 dark:text-zinc-400 font-mono text-sm">
+    <div className="flex items-center gap-3 text-gray-600 dark:text-zinc-400 font-mono">
       <FontAwesomeIcon
         icon={getWeatherIcon(weather.condition)}
         className="w-5 h-5"

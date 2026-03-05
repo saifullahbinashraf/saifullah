@@ -11,7 +11,8 @@ import {
   faLightbulb,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Weather } from './components/Weather';
 
 // Live clock component
@@ -39,7 +40,7 @@ function LiveTime() {
   }
 
   return (
-    <div className="text-gray-600 dark:text-zinc-400 font-mono text-sm">
+    <div className="text-gray-600 dark:text-zinc-400 font-mono">
       {formatTwoDigits(hours)}:{minutes} {ampm}
     </div>
   );
@@ -109,6 +110,58 @@ function BentoCard({
   );
 }
 
+// Achievement slides data
+const achievements = [
+  { title: 'Finance Professional' },
+  { title: 'ICAB Professional Level (12/17 cleared)' },
+  { title: 'National Competition Winner' },
+  { title: 'Taught 350+ Students' },
+];
+
+function InlineAchievementsSlider() {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const next = useCallback(() => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % achievements.length);
+  }, []);
+
+  // Auto-advance every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(next, 3000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  const slideVariants = {
+    enter: { y: 20, opacity: 0 },
+    center: { y: 0, opacity: 1 },
+    exit: { y: -20, opacity: 0 },
+  };
+
+  const item = achievements[current];
+
+  return (
+    <div className="relative overflow-hidden w-full h-10 md:h-12 flex items-center justify-center md:justify-start">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.20, ease: 'easeInOut' }}
+          className="absolute inset-0 flex items-center justify-center md:justify-start w-full"
+        >
+          <p className="text-lg sm:text-xl md:text-2xl font-light text-gray-700 dark:text-white/70 whitespace-nowrap">
+            {item.title}
+          </p>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -145,67 +198,82 @@ export default function HomePage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="min-h-[80vh] flex flex-col md:flex-row justify-center items-center md:items-start px-4 md:px-8 max-w-7xl mx-auto gap-8 md:gap-12"
+          className="min-h-[80vh] grid grid-cols-1 md:grid-cols-2 items-center px-4 md:px-8 max-w-7xl mx-auto gap-1 md:gap-12"
         >
-          {/* Left side - Text content */}
-          <div className="flex-1 flex flex-col justify-center">
-            {/* Time and Weather widgets */}
-            <motion.div variants={itemVariants} className="mb-12 flex flex-col md:flex-row gap-8 md:gap-12">
-              <div >
-                <LiveTime />
-              </div>
-              <div>
-                <Weather />
-              </div>
-            </motion.div>
+          {/* Time and Weather widgets */}
+          <motion.div variants={itemVariants} className="order-1 md:col-start-1 md:row-start-1 flex flex-row items-center gap-4 md:gap-12 justify-center md:justify-start text-xs md:text-sm">
+            <div className="flex items-center">
+              <LiveTime />
+            </div>
+            <div className="flex items-center">
+              <Weather />
+            </div>
+          </motion.div>
 
-            {/* Main headline */}
-            <motion.div variants={itemVariants} className="mb-8">
-              <h1 className="text-8xl md:text-9xl font-black leading-[0.9] tracking-tighter bg-clip-text text-transparent bg-linear-to-r from-gray-900 via-gray-900 to-gray-600 dark:from-white dark:via-white dark:to-white/50 mb-6">
-                SAIFULLAH
-              </h1>
-              <p className="text-xl md:text-2xl font-light text-gray-700 dark:text-white/70 max-w-2xl leading-relaxed">
-                Finance Professional, CA Aspirant & Content Creator
-              </p>
-            </motion.div>
+          {/* Hero Image */}
+          <motion.div variants={itemVariants} className="order-2 md:order-0 md:col-start-2 md:row-start-1 md:row-span-3 flex flex-col items-center md:items-end relative">
+            <div className="relative w-full max-w-48 sm:max-w-xs md:max-w-md h-56 sm:h-80 md:h-125">
+              
+              {/* Rotating blue ring */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-72 sm:h-72 md:w-110 md:h-110 -z-10 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              >
+                {/* Ring parts */}
+                <div className="absolute inset-0 rounded-full border-t-4 border-blue-500/60" />
+                <div className="absolute inset-0 rounded-full border-r-4 border-blue-400/40" style={{ transform: "rotate(120deg)" }} />
+                <div className="absolute inset-0 rounded-full border-b-4 border-blue-600/50" style={{ transform: "rotate(240deg)" }} />
+              </motion.div>
 
-            {/* CTA Button */}
-            <motion.div variants={itemVariants}>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gray-200 dark:bg-white/10 border border-gray-400 dark:border-white/10 rounded-xl text-black dark:text-white font-semibold backdrop-blur-xl hover:bg-gray-300 dark:hover:bg-white/15 transition-all duration-300 flex items-center gap-3 group"
-                >
-                  Get in touch
-                  <motion.span whileHover={{ x: 4 }}>
-                    <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-                  </motion.span>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Right side - Hero Image */}
-          <motion.div variants={itemVariants} className="flex-1 flex justify-center md:justify-end items-center relative">
-            <div className="relative w-full max-w-sm md:max-w-md h-96 md:h-[500px]">
               {/* Smooth rotating circle behind the image */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 -z-10"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-60 sm:h-60 md:w-96 md:h-96 -z-20"
                 style={{
                   animation: 'spin 20s linear infinite',
                 }}
               >
                 <div className="w-full h-full rounded-full bg-linear-to-br from-blue-300/50 via-cyan-200/40 to-blue-400/50 dark:from-blue-500/30 dark:via-cyan-400/20 dark:to-blue-600/30 blur-2xl" />
               </div>
+              
               <Image
-                src="/saif-hero.png"
+                src="/saifullah-heroimage.png"
                 alt="Saifullah Bin Ashraf"
                 fill
-                className="object-contain drop-shadow-2xl"
+                className="object-contain drop-shadow-2xl relative z-10"
                 priority
               />
+              
+              {/* Ground line directly attached to image */}
+              <div className="absolute bottom-0 left-[-20%] right-[-20%] h-1 bg-linear-to-r from-transparent via-blue-500/50 to-transparent z-20 md:hidden" />
             </div>
+            {/* Removed the standalone divider since it's now integrated inside the image container */}
+          </motion.div>
+
+          {/* Main headline */}
+          <motion.div variants={itemVariants} className="order-3 md:col-start-1 md:row-start-2 flex flex-col items-center md:items-start text-center md:text-left w-full">
+            <h1 className="font-black leading-[0.9] tracking-tighter hero-gradient-text mb-4 md:mb-6 text-center md:text-left w-full">
+              <span className="block text-6xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl">SAIFULLAH</span>
+              <span className="block text-2xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl mt-2 md:mt-4 tracking-tight">Bin Ashraf Mahi</span>
+            </h1>
+            {/* Inline achievements slider */}
+            <InlineAchievementsSlider />
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div variants={itemVariants} className="order-4 md:col-start-1 md:row-start-3 flex justify-center md:justify-start">
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gray-200 dark:bg-white/10 border border-gray-400 dark:border-white/10 rounded-xl text-black dark:text-white font-semibold backdrop-blur-xl hover:bg-gray-300 dark:hover:bg-white/15 transition-all duration-300 flex items-center gap-3 group"
+              >
+                Get in touch
+                <motion.span whileHover={{ x: 4 }}>
+                  <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+                </motion.span>
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.section>
 

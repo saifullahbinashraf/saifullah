@@ -327,3 +327,27 @@ table {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* Gradient text for hero heading */
+.hero-gradient-text {
+  background: linear-gradient(to right, #111827, #111827, #4b5563);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-gradient-text {
+    background: linear-gradient(to right, #ffffff, #ffffff, rgba(255, 255, 255, 0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.dark .hero-gradient-text {
+  background: linear-gradient(to right, #ffffff, #ffffff, rgba(255, 255, 255, 0.5));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
